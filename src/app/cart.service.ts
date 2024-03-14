@@ -11,7 +11,7 @@ export class CartService {
 
   constructor() { }
 
-  addToCart(item: Item) {
+  addToCart(item: Item): void {
     const cartItem = this.cartItems.value.find(x => x.id === item.id)
     if(!cartItem) {
       const newItem: Item = {
@@ -20,7 +20,7 @@ export class CartService {
       };
       this.cartItems.next([...this.cartItems.value, newItem]);
     } else {
-      cartItem.quantity =+ 1;
+      cartItem.quantity += 1;
     }
     this.fetchTotal();
   }
